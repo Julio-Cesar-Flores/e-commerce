@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
-import bcrypt from 'bcrypt';
-
+import bcrypt from "bcrypt";
 export const CLIENT = "Client";
 export const ADMINISTRATOR = "Administrator";
 export const SELLER = "Seller";
+
 export const ROLES = [CLIENT, ADMINISTRATOR, SELLER];
 
 const schema = new mongoose.Schema({

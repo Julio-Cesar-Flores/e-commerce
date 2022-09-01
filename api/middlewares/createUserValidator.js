@@ -7,9 +7,8 @@ import { ROLES, CLIENT } from "../models/User.js";
 const createUserSchema = joi.object({
   role: joi
     .string()
-    .valid(...ROLES)
-    .default(CLIENT)
-    .required(),
+    .required()
+    .valid(...ROLES),
   name: joi.string().required(),
   lastName: joi.string().required(),
   phone: joi.string().required(),
@@ -22,33 +21,51 @@ const createUserSchema = joi.object({
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
       "password"
     ),
-  address: joi
-    .alternatives()
-    .conditional("role", { is: CLIENT, then: joi.string().required() }),
-  location: joi
-    .alternatives()
-    .conditional("role", { is: CLIENT, then: joi.string().required() }),
-  numExterior: joi
-    .alternatives()
-    .conditional("role", { is: CLIENT, then: joi.string().required() }),
-  numInterior: joi
-    .alternatives()
-    .conditional("role", { is: CLIENT, then: joi.string().required() }),
-  city: joi
-    .alternatives()
-    .conditional("role", { is: CLIENT, then: joi.string().required() }),
-  country: joi
-    .alternatives()
-    .conditional("role", { is: CLIENT, then: joi.string().required() }),
-  zipCode: joi
-    .alternatives()
-    .conditional("role", { is: CLIENT, then: joi.string().required() }),
-  references: joi
-    .alternatives()
-    .conditional("role", { is: CLIENT, then: joi.string().required() }),
-  personalReferences: joi
-    .alternatives()
-    .conditional("role", { is: CLIENT, then: joi.string().required() }),
+  address: joi.alternatives().conditional("role", {
+    is: CLIENT,
+    then: joi.string().required(),
+    otherwise: joi.forbidden(),
+  }),
+  location: joi.alternatives().conditional("role", {
+    is: CLIENT,
+    then: joi.string().required(),
+    otherwise: joi.forbidden(),
+  }),
+  numExterior: joi.alternatives().conditional("role", {
+    is: CLIENT,
+    then: joi.number().required(),
+    otherwise: joi.forbidden(),
+  }),
+  numInterior: joi.alternatives().conditional("role", {
+    is: CLIENT,
+    then: joi.number().required(),
+    otherwise: joi.forbidden(),
+  }),
+  city: joi.alternatives().conditional("role", {
+    is: CLIENT,
+    then: joi.string().required(),
+    otherwise: joi.forbidden(),
+  }),
+  country: joi.alternatives().conditional("role", {
+    is: CLIENT,
+    then: joi.string().required(),
+    otherwise: joi.forbidden(),
+  }),
+  zipCode: joi.alternatives().conditional("role", {
+    is: CLIENT,
+    then: joi.string().required(),
+    otherwise: joi.forbidden(),
+  }),
+  references: joi.alternatives().conditional("role", {
+    is: CLIENT,
+    then: joi.string().required(),
+    otherwise: joi.forbidden(),
+  }),
+  personalReferences: joi.alternatives().conditional("role", {
+    is: CLIENT,
+    then: joi.string().required(),
+    otherwise: joi.forbidden(),
+  }),
   //shoppingCart
 });
 
