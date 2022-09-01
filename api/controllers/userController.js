@@ -12,8 +12,8 @@ const createUser = async (req, res) => {
     try {
       // admin puede crear administradores y vendedores
       const encryptedPass = await bcrypt.hash(user.password, 4);
-      req.body.password = encryptedPass;
-
+      user.password = encryptedPass;
+      //TODO: Crear un carrito vacio
       const updateUser = await User.create(user);
       updateUser.password = undefined;
       return res.json({

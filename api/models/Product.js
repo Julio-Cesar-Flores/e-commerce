@@ -3,34 +3,22 @@ import mongoose from "mongoose";
 const schema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
   },
   description: {
     type: String,
-    required: true,
   },
   specification: {
     type: String,
-    default: "Not available",
-    required: true,
   },
-  category: {
-    type: String,
-    required: true,
-  },
+  category: { type: mongoose.Schema.Types.ObjectId, ref: "Category" },
   price: {
-    type: String,
-    required: true,
-    unique: true,
+    type: Number,
   },
   quantity: {
     type: Number,
-    required: true,
   },
   imageUrl: {
     type: String,
-    required: true,
-    unique: true,
   },
 });
 
