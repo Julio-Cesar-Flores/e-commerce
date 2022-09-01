@@ -1,5 +1,5 @@
 import express from "express";
-//import authRoutes from './routes/authRoutes.js';
+import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 
 const api = express();
@@ -14,6 +14,8 @@ api.get("/status", (_, res) => {
 });
 
 api.use(userRoutes);
+api.use(authRoutes);
+
 //TODO: rutas
 
 export default api;

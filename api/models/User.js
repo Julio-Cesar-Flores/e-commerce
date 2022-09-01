@@ -1,7 +1,10 @@
 import mongoose from "mongoose";
+import bcrypt from 'bcrypt';
 
 export const CLIENT = "Client";
-export const ROLES = [CLIENT, "Administrator", "Seller"];
+export const ADMINISTRATOR = "Administrator";
+export const SELLER = "Seller";
+export const ROLES = [CLIENT, ADMINISTRATOR, SELLER];
 
 const schema = new mongoose.Schema({
   role: {
@@ -65,18 +68,19 @@ const schema = new mongoose.Schema({
 const User = mongoose.model("User", schema);
 
 try {
-  User.findOne({ email: "julio@correo.ith.mx" }, function (err, docs) {
+  User.findOne({ email: "julio@correo.ith.mx" }, async (err, docs) => {
     if (err) {
       console.log(err);
     } else {
       if (!docs) {
+        const password = await bcrypt.hash("Wa*123456", 4);
         User.create({
           role: "Administrator",
           name: "Julio",
           lastName: "Flores",
           phone: "45-34",
           email: "julio@correo.ith.mx",
-          password: "Wa*123456",
+          password,
         });
       }
     }

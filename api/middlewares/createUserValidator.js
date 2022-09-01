@@ -25,7 +25,30 @@ const createUserSchema = joi.object({
   address: joi
     .alternatives()
     .conditional("role", { is: CLIENT, then: joi.string().required() }),
-  //location, numExterior, numInterior, city, country, zipCode, references, personalReferences
+  location: joi
+    .alternatives()
+    .conditional("role", { is: CLIENT, then: joi.string().required() }),
+  numExterior: joi
+    .alternatives()
+    .conditional("role", { is: CLIENT, then: joi.string().required() }),
+  numInterior: joi
+    .alternatives()
+    .conditional("role", { is: CLIENT, then: joi.string().required() }),
+  city: joi
+    .alternatives()
+    .conditional("role", { is: CLIENT, then: joi.string().required() }),
+  country: joi
+    .alternatives()
+    .conditional("role", { is: CLIENT, then: joi.string().required() }),
+  zipCode: joi
+    .alternatives()
+    .conditional("role", { is: CLIENT, then: joi.string().required() }),
+  references: joi
+    .alternatives()
+    .conditional("role", { is: CLIENT, then: joi.string().required() }),
+  personalReferences: joi
+    .alternatives()
+    .conditional("role", { is: CLIENT, then: joi.string().required() }),
   //shoppingCart
 });
 
