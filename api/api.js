@@ -3,6 +3,7 @@ import * as fs from "fs";
 import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
+import productRoutes from "./routes/productRoutes.js";
 
 const api = express();
 api.use(express.json());
@@ -26,5 +27,6 @@ api.get("/status", (_, res) => {
 api.use(userRoutes);
 api.use(authRoutes);
 api.use(categoryRoutes);
+api.use(productRoutes);
 
 export default api;

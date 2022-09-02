@@ -5,14 +5,14 @@ const createProduct = async (req, res) => {
     const newProduct = await Product.create(req.body);
     return res.json({
       //status code 200
-      msg: "Producto creado",
+      msg: "Producto creado: " + newProduct.name,
       data: {
         product: newProduct,
       },
     });
   } catch (error) {
     return res.status(500).json({
-      msg: "Error al crear producto",
+      msg: "Error al crear producto " + req.body?.name,
       error,
     });
   }
