@@ -11,7 +11,7 @@ api.use(express.json());
 
 api.get("/", (_, res) => {
   return res.json({
-    msg: "API /login /register /categories /products",
+    msg: "API /login /register /categories /products /cart",
     login: "email password",
     register: "Client, Administrator, Seller",
     categories: "Seller",
