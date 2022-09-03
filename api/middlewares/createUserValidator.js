@@ -66,7 +66,7 @@ const createUserSchema = joi.object({
     then: joi.string().required(),
     otherwise: joi.forbidden(),
   }),
-  //shoppingCart
+  //cart shoppingCart 
 });
 
 export default async (req, res, next) => {

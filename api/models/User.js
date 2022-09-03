@@ -62,7 +62,7 @@ const schema = new mongoose.Schema({
   personalReferences: {
     type: String,
   },
-  cart: { type: mongoose.Schema.Types.ObjectId, ref: "Cart" },
+  cartId: { type: mongoose.Schema.Types.ObjectId, ref: "Cart" },
 });
 
 const User = mongoose.model("User", schema);
